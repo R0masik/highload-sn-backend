@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "545171fb-b403-4cbc-a819-d3866075c700",
+		"name": "highload-sn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "5037707"
+	},
+	"item": [
+		{
+			"name": "/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"6256c261-2055-47d6-b71c-e1419e290e9b\",\n  \"password\": \"Секретная строка\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8081/login"
+			},
+			"response": []
+		},
+		{
+			"name": "/user/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"first_name\": \"Имя\",\n  \"last_name\": \"Фамилия\",\n  \"birth_date\": \"2017-02-01\",\n  \"sex\": \"male\",\n  \"biography\": \"Хобби, интересы и т.п.\",\n  \"city\": \"Москва\",\n  \"password\": \"Секретная строка\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8080/user/register"
+			},
+			"response": []
+		},
+		{
+			"name": "/user/get/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:8081/user/get/6256c261-2055-47d6-b71c-e1419e290e9b"
+			},
+			"response": []
+		}
+	]
+}
