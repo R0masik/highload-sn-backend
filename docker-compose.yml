@@ -1,0 +1,40 @@
+services:
+  highload-sn-backend:
+    image: highload-sn-backend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: highload-sn-backend
+    depends_on:
+      - postgres
+    networks:
+      highload-sn-network:
+        ipv4_address: 10.10.10.10
+    ports:
+      - "8081:8080"
+    environment:
+      - POSTGRES_HOST=10.10.10.20:5432
+      - POSTGRES_USERNAME=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=highload-sn
+
+  postgres:
+    image: docker-registry.dev.int.nt-com.ru/postgres:14.2
+    container_name: postgres
+    networks:
+      highload-sn-network:
+        ipv4_address: 10.10.10.20
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=highload-sn
+    shm_size: 1gb
+
+networks:
+  highload-sn-network:
+    name: highload-sn-network
+    ipam:
+      config:
+        - subnet: 10.10.10.0/24
