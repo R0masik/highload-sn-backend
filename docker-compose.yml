@@ -19,7 +19,7 @@ services:
       - POSTGRES_DB=highload-sn
 
   postgres:
-    image: docker-registry.dev.int.nt-com.ru/postgres:14.2
+    image: postgres:14.2
     container_name: postgres
     networks:
       highload-sn-network:
